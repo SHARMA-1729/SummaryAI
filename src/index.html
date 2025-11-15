@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI Text Summarizer App</title>
+    <link rel="stylesheet" href="stylesheet.css">   
+  </head>
+  <body>
+    <div class="header">
+      <h1>AI Text Summarizer</h1>
+      <p class="subtitle">Transform lengthy texts into concise, meaningful summaries using advanced AI technology</p>
+      <p class="description">Simply paste your text below and let our AI create a perfect summary for you</p>
+    </div>
+    
+    <div class="container">
+      <div class="text-box fade-in">
+        <h3>
+          <span class="icon">📝</span>
+          Input Text
+        </h3>
+        <textarea 
+          id="text_to_summarize" 
+          name="text_to_summarize" 
+          placeholder="Paste your text here... (Minimum 200 characters, Maximum 100,000 characters)"
+          maxlength="100000"></textarea>
+        <div class="char-counter" id="char-counter">0 / 100,000 characters</div>
+        <button id="submit-button" class="submit-button">
+          <span class="submit-button-text">✨ Generate Summary</span>
+        </button>
+        <div id="status-message"></div>
+      </div>
+      
+      <div class="text-box fade-in">
+        <h3>
+          <span class="icon">⚡</span>
+          AI Summary
+        </h3>
+        <textarea 
+          id="summary" 
+          name="summarized_text" 
+          placeholder="Your AI-generated summary will appear here..."
+          readonly></textarea>
+        <div class="char-counter" id="summary-counter">Ready for summarization</div>
+      </div>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
