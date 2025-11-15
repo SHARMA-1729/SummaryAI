@@ -9,7 +9,6 @@ console.log('Environment check:', {
   ACCESS_TOKEN_PREVIEW: process.env.ACCESS_TOKEN ? process.env.ACCESS_TOKEN.substring(0, 10) + '...' : 'NOT FOUND'
 });
 
-const serverless = require('serverless-http');
 const app = express();
 const port = process.env.PORT || 3000;
 const summarizeText = require('./summarize.js');
@@ -19,8 +18,7 @@ app.use(express.json());
 app.use(express.static('src'));
 app.use('/assets', express.static('public'));
 
-// Accept both /summarize and /api/summarize for compatibility with Vercel rewrites
-app.post(['/summarize', '/api/summarize'], (req, res) => {
+app.post('/summarize', (req, res) => {
   const text = req.body.text_to_summarize;
 
   if (!text) {
@@ -40,13 +38,6 @@ app.post(['/summarize', '/api/summarize'], (req, res) => {
     });
 });
 
-// Start a local development server when executed directly
-if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
-  });
-}
-
-// Export a serverless handler for Vercel and other serverless platforms
-module.exports = serverless(app);
-module.exports.handler = module.exports;
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
+});
