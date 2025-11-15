@@ -85,7 +85,7 @@ function submitData(e) {
 
   const baseUrl = window.location.origin;
   const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const apiEndpoint = isLocalhost ? '/summarize' : '/api/summarize';
+  const apiEndpoint = 'https://summary-ai-zeta.vercel.app/summarize';
 
   fetch(`${baseUrl}${apiEndpoint}`, requestOptions)
     .then(response => {
